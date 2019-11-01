@@ -1,6 +1,8 @@
 # Load DSL and set up stages
 require "capistrano/setup"
 
+load 'deploy/assets'
+
 # Include default deployment tasks
 require "capistrano/deploy"
 
@@ -14,7 +16,7 @@ require "capistrano/deploy"
 # or
 require "capistrano/scm/git"
 install_plugin Capistrano::SCM::Git
-load 'deploy/assets'
+
 # Include tasks from other gems included in your Gemfile
 #
 # For documentation on these, see for example:
