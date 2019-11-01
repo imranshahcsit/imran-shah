@@ -1,0 +1,16 @@
+<h1>listing all users</h1>
+<table>
+	<tr>	
+		<th><h3>Name:  </h3></th>
+		<th><bold><h3>email:  </h3></bold></th>
+	</tr>
+	<% @users.each do |user|%>
+		<tr>	
+			<td><strong><%= user.name %></strong>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td>
+			<td><strong><%= user.email %></strong>&emsp;</td>
+	
+<td><%= link_to image_tag(user.image, style:'width:90px',height:'90px'), user_path(user)%></td>
+		</tr>
+	<%end%>
+</table>
+<p> New user? <%= link_to "Sign up now!",signup_path %></p>

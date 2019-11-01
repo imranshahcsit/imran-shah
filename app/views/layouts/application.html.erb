@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Userauth20</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+
+	<% flash.each do |message_type,message| %>
+		<div class="alert alert-<%= message_type %>">
+			<%= message %>
+		</div>
+	<% end %>
+
+	<header class="navbar navbar-expand-sm bg-light ">
+		<div class="container">	
+ 			<%= link_to "Home", users_path %>
+			<ul class="nav navbar-nav navbar-right">	
+					<li class="nav-link"><%=link_to "something", "#"%></li>
+					<li class="nav-link"><%=link_to "about", about_path%></li>
+					<% if logged_in? %>
+ 						<div class="dropdown">
+						  <li class="nav-link dropdown-toggle" data-toggle="dropdown">
+					  	<%=link_to @user.name%>  </li>
+						  <div class="dropdown-menu">
+								<li class="nav-link"><%= link_to "Log out", logout_path, method:"delete" %></li>
+								<li class="nav-link"><%=link_to "edit", edit_user_path(@user.id)%></li>
+						 	 </div>
+						</div> 
+					<% else %>						
+					<li class="nav-link"><%=link_to "Log in", login_path%></li>
+					<% end %>
+			</ul>
+		</div>
+	</header>	
+
+
+
+
+    <%= yield %>
+
+  </body>
+</html>

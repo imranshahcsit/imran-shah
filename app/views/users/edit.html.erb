@@ -1,0 +1,37 @@
+<h1>Update your profile</h1>
+<%= form_for(@user) do |f| %>
+
+
+<% if @user.errors.any? %>
+				<div id="error_explanation">
+					<div class="alert alert-danger">
+						The form contains
+						<%= pluralize(@user.errors.count,"error") %>
+					</div>
+						<ul>
+						<% @user.errors.full_messages.each do |msg| %>
+							<li><%= msg %></li>
+						<% end %>
+					</ul>
+				</div>
+			<% end %>
+
+
+
+<%= f.label :name %>
+<%= f.text_field :name,class: 'form-control' %>
+<%= f.label :email %>
+<%= f.email_field :email, class: 'form-control' %>
+<%= f.label :password %>
+<%= f.password_field :password, class: 'form-control' %>
+<%= f.label :password_confirmation,"Confirmation" %>
+<%= f.password_field :password_confirmation, class: 'form-control' %>
+
+				<div class="field">
+					<%= f.label :image %>
+					<%= f.file_field :image %>
+				</div>
+<%= f.submit "Save changes",class: "btn btn-primary" %>
+<% end %>
+
+
